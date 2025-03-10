@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const helmet = require('helmet');
+const path = require('path');
 
 // Carica variabili d'ambiente (deve essere prima di qualsiasi configurazione)
 dotenv.config();
@@ -69,6 +70,20 @@ app.get('/api', (req, res) => {
     version: '1.0.0'
   });
 });
+
+if (process.env.NODE_ENV === 'production') {
+  // Imposta la cartella statica
+  app.use(express.static(path.join(__dirname, '/client/dist')));
+
+  // Tutte le richieste che non corrispondono a rotte API vanno all'app React
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running...');
+  });
+}
 
 // 404 handler
 app.use((req, res, next) => {

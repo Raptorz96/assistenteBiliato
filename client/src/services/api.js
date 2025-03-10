@@ -1,9 +1,10 @@
 // src/services/api.js
 import axios from 'axios';
 
-// Utilizziamo il path relativo per sfruttare il proxy configurato in vite.config.js
+const baseURL = import.meta.env.VITE_API_URL || '/api';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL,
   headers: {
     'Content-Type': 'application/json',
   },
