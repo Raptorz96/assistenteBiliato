@@ -1,0 +1,168 @@
+/* 
+  App.css - Stili specifici per l'applicazione
+  Utilizza classi Tailwind per la maggior parte degli stili e
+  questo file solo per stili specifici dell'app
+*/
+
+/* Dashboard cards */
+.dashboard-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5;
+}
+
+.stat-card {
+  @apply flex flex-col p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow;
+}
+
+.stat-value {
+  @apply text-3xl font-bold text-gray-900 dark:text-white;
+}
+
+.stat-label {
+  @apply text-sm text-gray-500 dark:text-gray-400 mt-1;
+}
+
+/* Tables */
+.table-container {
+  @apply overflow-x-auto rounded-xl bg-white dark:bg-gray-800 shadow-sm;
+}
+
+.data-table {
+  @apply min-w-full divide-y divide-gray-200 dark:divide-gray-700;
+}
+
+.table-header {
+  @apply bg-gray-50 dark:bg-gray-700;
+}
+
+.table-header-cell {
+  @apply py-3.5 px-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider;
+}
+
+.table-row {
+  @apply hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors;
+}
+
+.table-cell {
+  @apply py-4 px-4 text-sm text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700;
+}
+
+/* Loading states */
+.loading-container {
+  @apply flex items-center justify-center min-h-[200px];
+}
+
+.loading-spinner {
+  @apply animate-spin h-8 w-8 text-primary-500;
+}
+
+/* Animations */
+.appear-animation {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full hover:bg-gray-400 dark:hover:bg-gray-500;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white dark:bg-gray-800 shadow-sm rounded-xl overflow-hidden transition-shadow hover:shadow-md;
+}
+
+/* Button styles */
+.btn {
+  @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+}
+
+.btn-primary {
+  @apply bg-primary-600 text-white hover:bg-primary-700 dark:bg-primary-700 dark:hover:bg-primary-600;
+}
+
+.btn-secondary {
+  @apply bg-secondary-600 text-white hover:bg-secondary-700 dark:bg-secondary-700 dark:hover:bg-secondary-600;
+}
+
+.icon-button {
+  @apply p-2 rounded-full hover:bg-gray-700 dark:hover:bg-gray-800 text-gray-300 hover:text-white transition-colors;
+}
+
+/* Remove focus outline for mouse, keep for keyboard */
+:focus:not(:focus-visible) {
+  @apply outline-none;
+}
+
+:focus-visible {
+  @apply outline-none ring-2 ring-primary-500 ring-offset-2 dark:ring-offset-gray-900;
+}
+
+/* Admin dashboard specific styles */
+.status-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.status-success {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300;
+}
+
+.status-warning {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300;
+}
+
+.status-error {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300;
+}
+
+.status-info {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300;
+}
+
+.status-primary {
+  @apply bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300;
+}
+
+/* Priority levels */
+.priority-high {
+  @apply bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500;
+}
+
+.priority-medium {
+  @apply bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500;
+}
+
+.priority-low {
+  @apply bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500;
+}
+
+/* Responsive improvements for smaller screens */
+@media (max-width: 640px) {
+  .dashboard-grid {
+    @apply grid-cols-1 gap-4;
+  }
+  
+  .card {
+    @apply p-4;
+  }
+  
+  .stat-value {
+    @apply text-2xl;
+  }
+}
